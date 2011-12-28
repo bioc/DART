@@ -1,0 +1,20 @@
+Package: DART
+Type: Package
+Title: Denoising Algorithm based on Relevance network Topology
+Version: 1.1.1
+Date: 2011-12-20
+Author: Yan Jiao, Katherine Lawler, Andrew E Teschendorff
+Depends: R (>= 2.10.0), igraph
+Suggests: breastCancerVDX, breastCancerMAINZ, Biobase
+biocViews: GeneExpression, DifferentialExpression, GraphsAndNetworks, Pathways, Bioinformatics
+Maintainer: Katherine Lawler <katherine.lawler@kcl.ac.uk>
+Description: Denoising Algorithm based on Relevance network Topology
+        (DART) is an algorithm designed to evaluate the consistency of
+        prior information molecular signatures (e.g in-vitro
+        perturbation expression signatures) in independent molecular
+        data (e.g gene expression data sets). If consistent, a pruning
+        network strategy is then used to infer the activation status of
+        the molecular signature in individual samples.
+License: GPL-2
+LazyLoad: yes
+Packaged: 2011-12-21 22:23:41 UTC; katherine

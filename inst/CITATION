@@ -1,0 +1,43 @@
+citHeader("To cite package 'DART' in publications use:")
+
+ citEntry(entry="Article",
+          title = "DART: Denoising Algorithm based on Relevance network Topology improves molecular pathway activity inference.",
+              author = personList(as.person("Jiao Y"),
+                                  as.person("Lawler K"),
+                                  as.person("Patel GS"),
+                                  as.person("Purushotham A"),
+                                  as.person("et al.")),
+	doi = "10.1186/1471-2105-12-403",
+	journal = "BMC Bioinformatics",
+	pages = "403",
+	title = "DART: Denoising Algorithm based on Relevance network Topology improves molecular pathway activity inference",
+	url = "http://www.biomedcentral.com/1471-2105/12/403",
+	volume = "12",
+	year = "2011",
+        textVersion =
+		"Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF et al. (2011) DART: Denoising Algorithm based on Relevance network Topology improves molecular pathway activity inference. BMC Bioinformatics, 12:403"
+		)
+
+#Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF et al. (2011) DART: Denoising Algorithm based on Relevance network Topology improves molecular pathway activity inference. BMC Bioinformatics, 12:403
+
+#A BibTeX entry for LaTeX users is
+
+#@Article{,
+#	author = {Jiao, Yan and Lawler, Katherine and Patel, Gargi S and Purushotham, Arnie and Jones, Annette F and Grigoriadis, Anita and Tutt, Andrew and Ng, Tony and Teschendorff, Andrew E},
+#	doi = {10.1186/1471-2105-12-403},
+#	journal = {BMC Bioinformatics},
+#	pages = {403},
+#	title = {{DART: Denoising Algorithm based on Relevance network Topology improves molecular pathway activity inference}},
+#	url = {http://www.biomedcentral.com/1471-2105/12/403},
+#	volume = {12},
+#	year = {2011}
+#}
+#
+##Or to cite DART methods in publications:
+#
+#	1. Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF et al. (2011) DART: Denoising Algorithm based on Relevance network Topology improves molecular pathway activity inference. BMC Bioinformatics, 12:403
+#
+#	2. Teschendorff AE, Gomez S, Arenas A, El-Ashry D, Schmidt M, et al. (2010) Improved prognostic
+#classification of breast cancer defined by antagonistic activation patterns of immune response
+#pathway modules. BMC Cancer 10:604.
+
