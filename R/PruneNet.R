@@ -30,7 +30,7 @@ for(e in pruneE.idx){
 
 score <- sum(pradj.m)/sum(adj.m);
 
-library(igraph);
+library(igraph0);
 gr.o <- graph.adjacency(pradj.m,mode="undirected");
 clust.o <-clusters(gr.o);
 maxc.idx <- which(clust.o$membership==(which.max(clust.o$csize)-1));

@@ -1,10 +1,10 @@
 Package: DART
 Type: Package
 Title: Denoising Algorithm based on Relevance network Topology
-Version: 1.3.0
-Date: 2011-12-20
+Version: 1.3.1
+Date: 2012-05-25
 Author: Yan Jiao, Katherine Lawler, Andrew E Teschendorff
-Depends: R (>= 2.10.0), igraph
+Depends: R (>= 2.10.0), igraph0
 Suggests: breastCancerVDX, breastCancerMAINZ, Biobase
 biocViews: GeneExpression, DifferentialExpression, GraphsAndNetworks, Pathways, Bioinformatics
 Maintainer: Katherine Lawler <katherine.lawler@kcl.ac.uk>
