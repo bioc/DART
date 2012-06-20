@@ -1,0 +1,8 @@
+CHANGES IN VERSION 1.2.1
+------------------------
+
+Dependency changed from igraph to igraph0.
+This change was made in release branch (BioC Release 2.10)
+
+
+

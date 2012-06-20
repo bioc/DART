@@ -2,7 +2,7 @@
 %\VignetteKeywords{network, denoising, microarray, breast cancer}
 %\VignetteDepends{DART}
 %\VignetteSuggests{breastCancerVDX,breastCancerMAINZ}
-%\VignetteImports{igraph}
+%\VignetteImports{igraph0}
 %\VignettePackage{DART}
 
 \documentclass[a4paper,11pt]{article}
