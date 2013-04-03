@@ -1,7 +1,7 @@
 Package: DART
 Type: Package
 Title: Denoising Algorithm based on Relevance network Topology
-Version: 1.6.0
+Version: 1.7.0
 Date: 2012-05-25
 Author: Yan Jiao, Katherine Lawler, Andrew E Teschendorff
 Depends: R (>= 2.10.0), igraph0
