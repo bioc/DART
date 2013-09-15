@@ -4,7 +4,7 @@ Title: Denoising Algorithm based on Relevance network Topology
 Version: 1.7.1
 Date: 2013-09-15
 Author: Yan Jiao, Katherine Lawler, Andrew E Teschendorff
-Depends: R (>= 2.10.0), igraph
+Depends: R (>= 2.10.0), igraph (>= 0.6.0)
 Suggests: breastCancerVDX, breastCancerMAINZ, Biobase
 biocViews: GeneExpression, DifferentialExpression, GraphsAndNetworks, Pathways, Bioinformatics
 Maintainer: Katherine Lawler <katherine.lawler@kcl.ac.uk>
