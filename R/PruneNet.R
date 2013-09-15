@@ -30,10 +30,10 @@ for(e in pruneE.idx){
 
 score <- sum(pradj.m)/sum(adj.m);
 
-library(igraph0);
+# This section uses functions from the igraph package
 gr.o <- graph.adjacency(pradj.m,mode="undirected");
 clust.o <-clusters(gr.o);
-maxc.idx <- which(clust.o$membership==(which.max(clust.o$csize)-1));
+maxc.idx <- which(clust.o$membership==(which.max(clust.o$csize)));
 pradjMC.m <- pradj.m[maxc.idx,maxc.idx];
 signMC.v <- sign.v[maxc.idx];
 
