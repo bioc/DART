@@ -2,7 +2,8 @@ citHeader("To cite package 'DART' in publications use:")
 
 citEntry(entry="Article",
         title = "DART: Denoising Algorithm based on Relevance network Topology improves molecular pathway activity inference.",
-        author = "Y Jiao and K Lawler and GS Patel and A Purushotham and others"
+        author = "Y Jiao and K Lawler and GS Patel and A Purushotham and
+others",
 	doi = "10.1186/1471-2105-12-403",
 	journal = "BMC Bioinformatics",
 	pages = "403",
@@ -13,7 +14,7 @@ citEntry(entry="Article",
         )
 
 citEntry(entry="Article",
-	note = "Additional citation for DART methods."
+	note = "Additional citation for DART methods.",
         title = "Improved prognostic classification of breast cancer defined by antagonistic activation patterns of immune response pathway modules",
         author = "AE Teschendorff and S Gomez and A Arenas and D El-Ashry and M Schmidt and others",
 	journal = "BMC Cancer",
