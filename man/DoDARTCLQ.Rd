@@ -1,13 +1,20 @@
-\name{DoDART}
-\alias{DoDART}
+\name{DoDARTCLQ}
+\alias{DoDARTCLQ}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Main function of DART
+Improved edition of DoDART
 }
 \description{
-This is the main function implementing DART. Given a data matrix and a model (pathway) signature it will construct the relevance correlation network for the genes in the signature over the data, evaluate the consistency of the correlative patterns with those predicted by the model signature, filter out the noise and finally obtain estimates of pathway activity for each individual sample. Specifically, it will call and run the following functions:
+This function implements an improved version of DART. \code{DoDARTCLQ}
+estimates perturbation/pathway activity using a smaller subnetwork
+compared to \code{DoDART}. Specifically, whereas \code{DoDART} uses the whole pruned correlation network, \code{DoDARTCLQ} infers the largest cliques within the pruned correlation network and then estimates activity using only genes within a module obtained by merging the largest cliques together. Although the largest cliques may not be unique, we found that they generally exhibited very strong overlaps, justfying their merging, and resulting in approximate clique modules typically in the size of ~10 - 100 genes.
 
-(1) \code{BuildRN:} This function builds a relevance correlation network of the model pathway signature in the data set in which the pathway activity estimate is desired. We point that this step is totally unsupervised and does not use and phenotypic information of the samples. 
+Given a data matrix and a model (pathway) signature it will construct the relevance correlation network for the genes in the signature over the data, evaluate the consistency of the correlative patterns with those predicted by the model signature, filter out the noise and finally obtain estimates of pathway activity for each individual sample. Specifically, it will call and run the following functions:
+
+(1) \code{BuildRN:} This function builds a relevance correlation network
+of the model pathway signature in the data set in which the pathway
+activity estimate is desired. We point that this step is totally
+unsupervised and does not use any sample phenotype information. 
 
 (2) \code{EvalConsNet:} This function evaluates the consistency of the inferred network with the prior information of the model pathway signature. The up/down regulatory pattern given by the model signature implies predictions about the directionality of the gene-gene correlations in the independent data set. For instance, if  gene "A" is upregulated and gene "B" is downregulated, then assuming that the model signature has any relevance in the independent data set, we would expect genes "A" and "B" to be anti-correlated. Thus, a consistency score can be computed. Only if the consistency score is higher than the score expected by random chance is it recommended that the model signature be used to infer pathway activity. 
 
@@ -15,7 +22,7 @@ This is the main function implementing DART. Given a data matrix and a model (pa
 
 (4) \code{PredActScore:} Given the adjacency matrix of the maximally connected consistent subnetwork and given the regulatory weights of the corresponding model pathway signature, this function estimates a pathway activation score in each sample. This function can also be used to infer pathway activity in another independent data set using the inferred subnetwork.
 
-Before performing the pruning step, \code{DoDART} will check whether
+Before performing the pruning step, \code{DoDARTCLQ} will check whether
 the relevance correlation network is significantly consistent with the
 predictions from the model signature. Significance is assessed by
 first computing a consistency score (in effect, the fraction of edges in the
@@ -24,17 +31,15 @@ subsequently by 1000 random permutations to obtain an empirical null
 distribution for the consistency score. Model signatures whose consistency scores have
 empirical P-values less than 0.001 are deemed consistent. If the
 consistency score is not significant, the function will issue a warning and it is not recommended to use the signature to predict pathway activity.
-
 }
-
 \usage{
-DoDART(data.m, sign.v, fdr)
+DoDARTCLQ(data.m, sign.v, fdr)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
 
-  \item{data.m}{Data matrix (numeric). Rows label features, columns label samples. It is assumed that number of features is much larger than number of samples. Rownames of \code{data.m} must be valid unique gene (probe) identifiers.}
-  \item{sign.v}{Model pathway signature vector (numeric). Elements represent the regulatory weights (i.e if up or downregulated). Names of \code{sign.v} are the gene identifiers, which must match the gene (probe) identifiers of the rows of \code{data.m}}
+  \item{data.m}{Training normalized gene expression data matrix with rows labeling genes and columns labeling samples. Rownames of \code{data.m} should be annotated to the same gene identifier as used in names of \code{sign.v}.}
+  \item{sign.v}{A perturbation expression signature vector, consisting of 1 and -1, indicating whether gene is significant overexpressed or underexpressed, respectively. names of \code{sign.v} should have a valid gene identifier e.g. entrez gene ID.}
   \item{fdr}{Desired false discovery rate (numeric) which determines the
   allowed number of false positives in the relevance network. The
   default value is 0.000001. Since typically model signatures may
@@ -49,20 +54,19 @@ DoDART(data.m, sign.v, fdr)
 %%  ~~ If necessary, more details than the description above ~~
 %}
 \value{
-  \item{netcons}{A vector summarising the properties of the correlation network and the consistency with the model pathway signature: nG is the number of genes in the signature, nE is the number of edges of the relevance network generated by function \code{BuildRN}, fE is the ratio of the number of edges in the relevance network to the maximum possible number, fconsE is the fraction of edges whose sign (i.e sign of correlation) is the same as the directionality predicted by the model signature, Pval(consist) is a p-value reflecting the significance of fconsE, and is estimated as the fraction of randomisations that yielded an average connectivity larger than the observed one.}
-  \item{adj}{Adjacency matrix of maximally connected consistent relevance network.}
-  \item{sign}{Model pathway signature vector of genes found in data set and in maximally connected component.}
-  \item{score}{Predicted activation scores of the model signature in the samples of data set \code{data.m}.}
-  \item{degree}{Degrees/connectivities of the genes in the DART network.}
+  \item{pred}{A vector of predicted perturbation activity scores for all samples in \code{data.m}.}
+  \item{clq}{A list containing information about the approximate clique gene module used to compute perturbation activity. List entries: clq$pradjMC: the adjacency matrix of the approx. clique gene module, clq$signMC: the corresponding perturbation signature for the genes making up the approx. clique module, clq$sizes: the sizes of all largest cliques in the pruned correlation network, clq$n: the number of largest cliques in the pruned correlation network.}
   \item{Consistency_result.o}{Module consistency result, output of \code{EvalConsNet}.}
 }
 \references{
 {Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF, Grigoriadis A, Ng T, Teschendorff AE. (2011)  Denoising algorithm based on relevance network topology improves molecular pathway activity inference. BMC Bioinformatics 12:403.}
 
 {Teschendorff AE, Gomez S, Arenas A, El-Ashry D, Schmidt M, et al. (2010) Improved prognostic classification of breast cancer defined by antagonistic activation patterns of immune response pathway modules. BMC Cancer 10:604.}
+
+{Teschendorff AE, Li L, Yang Z. (2015) Denoising perturbation signatures reveals an actionable AKT-signaling gene module underlying a poor clinical outcome in endocrine treated ER+ breast cancer. Genome Biology 16:61.}
 }
 \author{
-Andrew E Teschendorff, Yan Jiao
+Andrew E Teschendorff
 }
 %\note{
 %%  ~~further notes~~
@@ -84,13 +88,14 @@ data(dataDART);
 ### dataDART$sign: perturbation signature of ERBB2 activation.
 
 
-### Using DoDART
-dart.o <- DoDART(dataDART$data,dataDART$sign,fdr=0.000001);
+### Using DoDARTCLQ
+dart.o <- DoDARTCLQ(dataDART$data,dataDART$sign, fdr=0.000001);
 ### check that activation is higher in HER2+ compared to basals
-boxplot(dart.o$score ~ dataDART$pheno);
-pv <- wilcox.test(dart.o$score ~ dataDART$pheno)$p.value;
-text(x=1.5,y=3.8,labels=paste("P=",pv,sep=""));
+boxplot(dart.o$pred ~ dataDART$pheno);
+pv <- wilcox.test(dart.o$pred ~ dataDART$pheno)$p.value;
+text(x=1.5,y=3.5,labels=paste("P=",pv,sep=""));
 
 }
 
+\keyword{clique}
 \keyword{network}

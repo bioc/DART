@@ -1,4 +1,9 @@
 
+
+CHANGES IN VERSION 1.15.3
+------------------------
+    o	Function DoDARTCLQ is added.
+
 CHANGES IN VERSION 1.7.1
 ------------------------
     o	Dependency changed from igraph0 to igraph (>=0.6.0) due to

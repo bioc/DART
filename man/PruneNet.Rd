@@ -25,7 +25,7 @@ PruneNet(evalNet.o)
    \item{signMC}{The model signature vector of the genes in the maximally connected component.}
 }
 \references{
-{Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF, Grigoriadis A, Ng T, Teschendorff AE. Denoising algorithm based on relevance network topology improves molecular pathway activity inference. Submitted.}
+{Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF, Grigoriadis A, Ng T, Teschendorff AE. (2011)  Denoising algorithm based on relevance network topology improves molecular pathway activity inference. BMC Bioinformatics 12:403.}
 
 {Teschendorff AE, Gomez S, Arenas A, El-Ashry D, Schmidt M, et al. (2010) Improved prognostic classification of breast
 cancer defined by antagonistic activation patterns of immune response pathway modules. BMC Cancer 10:604.}
@@ -47,7 +47,7 @@ data(dataDART)
 rn.o <- BuildRN(dataDART$data, dataDART$sign, fdr=0.05)
 evalNet.o <- EvalConsNet(rn.o)
 prNet.o <- PruneNet(evalNet.o)
-pred.o <- PredActScore(prNet.o$pradjMC,prNet.o$signMC,dataDART$data)
+pred.o <- PredActScore(prNet.o,dataDART$data)
 ## See ?DoDART and vignette('DART') for further examples.
   
 }

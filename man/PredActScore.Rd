@@ -8,12 +8,11 @@ Computes the DART activation score of the model signature in the samples of a da
 This function computes the DART activation score of the model signature for the samples of a data matrix. This data matrix can be the same data matrix in which DART was applied or it could be a totally independent data set.
 }
 \usage{
-PredActScore(pradjMC.m, signMC.v, data.m)
+PredActScore(prNet.o, data.m)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{pradjMC.m}{The adjacency matrix (numeric) of the maximally connected pruned network inferred using DART.}
-  \item{signMC.v}{The corresponding model signature vector (numeric).}
+  \item{prNet.o}{Output \code{list} object from PruneNet.}
   \item{data.m}{A data matrix (numeric) with rows labeling genes/probes and columns labeling samples in which the signature activity scores are desired.}
 }
 %\details{
@@ -28,7 +27,7 @@ PredActScore(pradjMC.m, signMC.v, data.m)
 %% ...
 }
 \references{
-{Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF, Grigoriadis A, Ng T, Teschendorff AE. Denoising algorithm based on relevance network topology improves molecular pathway activity inference. Submitted.}
+{Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF, Grigoriadis A, Ng T, Teschendorff AE. (2011)  Denoising algorithm based on relevance network topology improves molecular pathway activity inference. BMC Bioinformatics 12:403.}
 
 {Teschendorff AE, Gomez S, Arenas A, El-Ashry D, Schmidt M, et al. (2010) Improved prognostic classification of breast cancer defined by antagonistic activation patterns of immune response pathway modules. BMC Cancer 10:604.}
 
@@ -41,7 +40,7 @@ data(dataDART)
 rn.o <- BuildRN(dataDART$data, dataDART$sign, fdr=0.05)
 evalNet.o <- EvalConsNet(rn.o)
 prNet.o <- PruneNet(evalNet.o)
-pred.o <- PredActScore(prNet.o$pradjMC,prNet.o$signMC,dataDART$data)
+pred.o <- PredActScore(prNet.o,dataDART$data)
 ## See ?DoDART and vignette('DART') for further examples.
 
 }

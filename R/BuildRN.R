@@ -1,5 +1,5 @@
 BuildRN <-
-function(data.m,sign.v,fdr=0.05){
+function(data.m,sign.v,fdr=0.000001){
 
   ### find signature genes in data matrix
   match(names(sign.v),rownames(data.m)) -> map.idx;

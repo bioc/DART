@@ -1,4 +1,4 @@
 
 import(igraph)
-export(DoDART, BuildRN, EvalConsNet, PruneNet, PredActScore)
+export(DoDART, DoDARTCLQ, BuildRN, EvalConsNet, PruneNet, PredActScore)
 

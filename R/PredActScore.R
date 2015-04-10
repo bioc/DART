@@ -1,4 +1,4 @@
-PredActScore <- function(pradjMC.m,signMC.v,data.m){
+PredActScore <- function(prNet.o,data.m){
 
   if(length(which(is.na(data.m))) > 0){
     print("missing data in data.m must be imputed before proceeding");
@@ -14,7 +14,7 @@ PredActScore <- function(pradjMC.m,signMC.v,data.m){
   }
   
     
-  match(rownames(pradjMC.m),rownames(stdata.m)) -> idx;
+  match(rownames(prNet.o$pradjMC),rownames(stdata.m)) -> idx;
   which(is.na(idx)) -> idx.na
   naF <- round(length(idx.na)/length(idx),2)
   print(paste("Found ",100-100*naF,"% of maximally connected pruned network genes in the data",sep=""));
@@ -26,14 +26,14 @@ PredActScore <- function(pradjMC.m,signMC.v,data.m){
 
   setdiff(1:length(idx),idx.na) -> idx.sel;
   tmp.m <- stdata.m[idx[idx.sel],];
-  tmpA.m <- pradjMC.m[idx.sel,idx.sel];
+  tmpA.m <- prNet.o$pradjMC[idx.sel,idx.sel];
   k.v <- apply(tmpA.m,1,sum);  
-  genescores.m <- k.v*sign(signMC.v[idx.sel])*tmp.m;
+  genescores.m <- k.v*sign(prNet.o$signMC[idx.sel])*tmp.m;
   score.v <- apply(genescores.m,2,sum)/sqrt(sum(k.v*k.v));
   
 
   }
 
 
-  return(list(adj=tmpA.m,sign=signMC.v[idx.sel],score=score.v,degree=k.v));
+  return(list(adj=tmpA.m,sign=prNet.o$signMC[idx.sel],score=score.v,degree=k.v));
 }
