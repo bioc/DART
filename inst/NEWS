@@ -2,7 +2,8 @@
 
 CHANGES IN VERSION 1.15.3
 ------------------------
-    o	Function DoDARTCLQ is added.
+    o	Function DoDARTCLQ is added. And some arguments and values changes
+        in previous functions. 
 
 CHANGES IN VERSION 1.7.1
 ------------------------
