@@ -1,9 +1,12 @@
+CHANGES IN VERSION 1.17.1
+------------------------
+    o	Some minor changes in value names in function DoDART and DoDARTCLQ.  
 
 
 CHANGES IN VERSION 1.15.3
 ------------------------
-    o	Function DoDARTCLQ is added. And some arguments and values changes
-        in previous functions. 
+    o	Function DoDARTCLQ is added. And some arguments and values were changed
+        in several functions. 
 
 CHANGES IN VERSION 1.7.1
 ------------------------

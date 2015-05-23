@@ -22,6 +22,6 @@ DoDARTCLQ <- function(data.m,sign.v,fdr=0.000001){
         nCLQ <- length(clqSizes.v);
         clq.l <- list(pradjMC=prnet.o$pradjMC[clq.idx,clq.idx],signMC=prnet.o$signMC[clq.idx],sizes=clqSizes.v,n=nCLQ);
         pred.v <- PredActScore(clq.l,data.m)$score;
-        return(list(pred=pred.v,clq=clq.l, Consistency_result.o=cnet.o));
+        return(list(pred=pred.v,clq=clq.l, consist=cnet.o));
     }
 }

@@ -56,7 +56,7 @@ DoDARTCLQ(data.m, sign.v, fdr)
 \value{
   \item{pred}{A vector of predicted perturbation activity scores for all samples in \code{data.m}.}
   \item{clq}{A list containing information about the approximate clique gene module used to compute perturbation activity. List entries: clq$pradjMC: the adjacency matrix of the approx. clique gene module, clq$signMC: the corresponding perturbation signature for the genes making up the approx. clique module, clq$sizes: the sizes of all largest cliques in the pruned correlation network, clq$n: the number of largest cliques in the pruned correlation network.}
-  \item{Consistency_result.o}{Module consistency result, output of \code{EvalConsNet}.}
+  \item{consist}{Module consistency result, output of \code{EvalConsNet}.}
 }
 \references{
 {Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF, Grigoriadis A, Ng T, Teschendorff AE. (2011)  Denoising algorithm based on relevance network topology improves molecular pathway activity inference. BMC Bioinformatics 12:403.}

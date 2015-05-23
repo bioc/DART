@@ -54,7 +54,7 @@ DoDART(data.m, sign.v, fdr)
   \item{sign}{Model pathway signature vector of genes found in data set and in maximally connected component.}
   \item{score}{Predicted activation scores of the model signature in the samples of data set \code{data.m}.}
   \item{degree}{Degrees/connectivities of the genes in the DART network.}
-  \item{Consistency_result.o}{Module consistency result, output of \code{EvalConsNet}.}
+  \item{consist}{Module consistency result, output of \code{EvalConsNet}.}
 }
 \references{
 {Jiao Y, Lawler K, Patel GS, Purushotham A, Jones AF, Grigoriadis A, Ng T, Teschendorff AE. (2011)  Denoising algorithm based on relevance network topology improves molecular pathway activity inference. BMC Bioinformatics 12:403.}
