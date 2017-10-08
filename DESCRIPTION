@@ -19,4 +19,3 @@ LazyLoad: yes
 biocViews: GeneExpression, DifferentialExpression, GraphAndNetwork,
         Pathways
 NeedsCompilation: no
-Packaged: 2015-05-23 15:05:42 UTC; Charles
